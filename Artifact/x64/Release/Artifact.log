@@ -1,0 +1,10 @@
+﻿  main.cpp
+C:\opencv455\build\include\opencv2\calib3d.hpp(1,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+C:\HighSpeedCamera\HighSpeedCamera\util\include\HSC\Camera.hpp(247,76): warning C4244: '初期化中': 'int' から 'float' への変換です。データが失われる可能性があります。
+C:\kagami\programs\ReprojectionPointErrorCalculator\Artifact\main.cpp(233,1): warning C4305: '引数': 'double' から 'const float' へ切り詰めます。
+  コード生成しています。
+  30 of 4350 functions ( 0.7%) were compiled, the rest were copied from previous compilation.
+    29 functions were new in current compilation
+    8 functions had inline decision re-evaluated but remain unchanged
+  コード生成が終了しました。
+  Artifact.vcxproj -> C:\kagami\programs\ReprojectionPointErrorCalculator\x64\Release\Artifact.exe
