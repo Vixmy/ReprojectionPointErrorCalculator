@@ -2,7 +2,7 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>C:\kagami\programs\ReprojectionPointCalculator\x64\Release\ReprojectionPointCalculator.exe</FullPath>
+      <FullPath>C:\kagami\programs\ReprojectionPointErrorCalculator\x64\Release\ReprojectionPointCalculator.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

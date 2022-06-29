@@ -1,4 +1,5 @@
 # include <opencv2/opencv.hpp>
+#include <opencv2/imgproc.hpp>
 
 #define PAT_ROW     7                   // チェスボードパターン列
 #define PAT_COL     10                  // チェスボードパターン行
@@ -11,14 +12,12 @@
 int main() {
     for (int pos = 0; pos < POSITION_NUM; pos++) {
         // 画像読み込み
-        cv::Mat white, black0, black1, binary0, binary1, color;
+        cv::Mat white, black0, black1, binary0, binary1;
         std::ostringstream file_name;
-        file_name << "C:/kagami/programs/ReprojectionPointCalculator/img/" << pos << "/";
+        file_name << "C:/kagami/programs/ReprojectionPointErrorCalculator/img/" << pos << "/";
         white = cv::imread(file_name.str() + "proj_white.bmp");
-        black0 = cv::imread(file_name.str() + "proj0_black.bmp", CV_LOAD_IMAGE_GRAYSCALE);
-        black1 = cv::imread(file_name.str() + "proj1_black.bmp", CV_LOAD_IMAGE_GRAYSCALE);
-        cv::cvtColor(black0, color, CV_GRAY2BGR);
-        cv::cvtColor(black1, color, CV_GRAY2BGR);
+        black0 = cv::imread(file_name.str() + "proj0_black.bmp", 0);
+        black1 = cv::imread(file_name.str() + "proj1_black.bmp", 0);
 
         // 格子点検出
         std::vector<cv::Point2f> corners0, corners;
@@ -27,14 +26,14 @@ int main() {
 
         // 二値化処理
         int threshold = 30;
-        cv::threshold(black0, binary0, threshold, 255, CV_THRESH_BINARY);
-        cv::threshold(black1, binary1, threshold, 255, CV_THRESH_BINARY);
+        cv::threshold(black0, binary0, threshold, 255, 0);
+        cv::threshold(black1, binary1, threshold, 255, 0);
 
         // 輪郭抽出
         std::vector<std::vector<cv::Point>> contours0, contours1;
         std::vector<cv::Vec4i> hierarchy;
-        cv::findContours(binary0, contours0, hierarchy, CV_RETR_EXTERNAL, CV_CHAIN_APPROX_NONE);
-        cv::findContours(binary1, contours1, hierarchy, CV_RETR_EXTERNAL, CV_CHAIN_APPROX_NONE);
+        cv::findContours(binary0, contours0, hierarchy, 0, 1);
+        cv::findContours(binary1, contours1, hierarchy, 0, 1);
 
         // 輪郭内部塗りつぶし
         std::vector<cv::Point2f> lights0, lights1; // 投影された光の点の座標
@@ -188,9 +187,9 @@ int main() {
         cv::imwrite(file_name.str() + "result_mm1.bmp", result_mm1);
 
         // artifact
-        cv::Mat board_img;
+        /*cv::Mat board_img;
         board_img = cv::imread("C:/kagami/data/rect283-5.png");
-        cv::warpPerspective(board_img, board_img, H, cv::Size(1024, 768), CV_WARP_INVERSE_MAP);
+        cv::warpPerspective(board_img, board_img, H, cv::Size(1024, 768), CV_WARP_INVERSE_MAP);*/
 
         // プロジェクタの投影点間の距離
         cv::Mat relative_pix(cv::Size(w, h), CV_8UC3, cv::Scalar::all(255));
