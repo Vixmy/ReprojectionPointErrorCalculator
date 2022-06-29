@@ -1,0 +1,8 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(513,5): warning MSB8028: 中間ディレクトリ (x64\Release\) に別のプロジェクト (HoughCircles.vcxproj) と共有されているファイルが含まれています。これにより、クリーンしてリビルド動作が適切に行われない可能性があります。
+  main.cpp
+  コード生成しています。
+  1 of 159 functions ( 0.6%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  コード生成が終了しました。
+  HoughCircles.vcxproj -> C:\kagami\programs\ReprojectionPointCalculator\x64\Release\PointDetect.exe
